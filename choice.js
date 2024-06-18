@@ -33,20 +33,11 @@ const teams = [
             'tsn': {'trigram' : 'tsn', 'name': 'Tania', 'present' : getBoolFromStorage('tsn'), 'tab' : null, 'done' : false, 'time' : 0 },
             'aud': {'trigram' : 'aud', 'name': 'Aurélie', 'present' : getBoolFromStorage('aud'), 'tab' : null, 'done' : false, 'time' : 0 },
             'mta': {'trigram' : 'mta', 'name': 'Messipsa', 'present' : getBoolFromStorage('mta'), 'tab' : null, 'done' : false, 'time' : 0 },
-            'adl': {'trigram' : 'adl', 'name': 'Agathe', 'present' : getBoolFromStorage('adl'), 'tab' : null, 'done' : false, 'time' : 0 }
+            'adl': {'trigram' : 'adl', 'name': 'Agathe', 'present' : getBoolFromStorage('adl'), 'tab' : null, 'done' : false, 'time' : 0 },
+            'jtn': {'trigram' : 'jtn', 'name': 'Justin', 'present' : getBoolFromStorage('jtn'), 'tab' : null, 'done' : false, 'time' : 0 }
         }
         
-    },
-    {
-        "name": "Intégration",
-        "id": "2",
-        "trelloId": "uuuu",
-        "devs": 
-        {
-            'mta': {'trigram' : 'mta', 'name': 'Messipsa', 'present' : getBoolFromStorage('mta'), 'tab' : null, 'done' : false, 'time' : 0 }
-        }
-        
-    },
+    }
 ]
 
 function getBoolFromStorage(key) {
