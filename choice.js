@@ -33,8 +33,8 @@ const teams = [
             'tsn': {'trigram' : 'tsn', 'name': 'Tania', 'present' : getBoolFromStorage('tsn'), 'tab' : null, 'done' : false, 'time' : 0 },
             'aud': {'trigram' : 'aud', 'name': 'Aurélie', 'present' : getBoolFromStorage('aud'), 'tab' : null, 'done' : false, 'time' : 0 },
             'mta': {'trigram' : 'mta', 'name': 'Messipsa', 'present' : getBoolFromStorage('mta'), 'tab' : null, 'done' : false, 'time' : 0 },
-            'adl': {'trigram' : 'adl', 'name': 'Agathe', 'present' : getBoolFromStorage('adl'), 'tab' : null, 'done' : false, 'time' : 0 },
-            'jtn': {'trigram' : 'jtn', 'name': 'Justin', 'present' : getBoolFromStorage('jtn'), 'tab' : null, 'done' : false, 'time' : 0 }
+            'Agathe': {'trigram' : 'Agathe', 'name': 'Agathe', 'present' : getBoolFromStorage('adl'), 'tab' : null, 'done' : false, 'time' : 0 },
+            'Justin': {'trigram' : 'Justin', 'name': 'Justin', 'present' : getBoolFromStorage('jtn'), 'tab' : null, 'done' : false, 'time' : 0 }
         }
         
     }
@@ -342,12 +342,16 @@ const redrawAll = (devList, deltaStartAngle = 0) => {
 
 //#region Dev utilities
 let colorIndex = 0;
-const fonts = ['ancient', 'romantice', 'magic-retro', 'xantegrode-signature', 'typewriter']
+const fonts = ['poppins', 'baloo 2', 'fredoka', 'lobster', 'pacifico', 'bangers', 'concert one', 'chewy', 'shadows into light', 'caveat']
 const colors = ['green', 'yellow', 'orange', 'red', 'pink', 'blue', 'white'];
 const setDevAsCurrent = dev => {
     const txtDevCurrent = document.getElementById('txtDevCurrent');
     explodeParticles(dev.tab, 'white');
-    txtDevCurrent.textContent = `${getDevName(dev.trigram)}`;
+    let devName = dev.name;
+    if (dev.trigram !== dev.name){
+        devName += ` (${dev.trigram})`;
+    }
+    txtDevCurrent.textContent = devName;
     currentTeam[dev.trigram].done = true;
     selectedDev = dev;
     startDevTimer(dev.trigram);
@@ -536,8 +540,12 @@ function updateCurrentDev(dev) {
     const font = fonts[fontIndex];
 
     clearSelectedDevs();
-    txtDevCurrent.setAttribute('data-font', font);
-    txtDevCurrent.textContent = dev.trigram;
+    txtDevCurrent.setAttribute('style', 'font-family: ' + font);
+    let devName = dev.name;
+    if (dev.trigram !== dev.name){
+        devName += ` (${dev.trigram})`;
+    }
+    txtDevCurrent.textContent = devName;
     dev.tab.classList.add('selected');
 }
 
