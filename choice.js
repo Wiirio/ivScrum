@@ -33,8 +33,6 @@ const teams = [
             'tsn': {'trigram' : 'tsn', 'name': 'Tania', 'present' : getBoolFromStorage('tsn'), 'tab' : null, 'done' : false, 'time' : 0 },
             'aud': {'trigram' : 'aud', 'name': 'Aurélie', 'present' : getBoolFromStorage('aud'), 'tab' : null, 'done' : false, 'time' : 0 },
             'mta': {'trigram' : 'mta', 'name': 'Messipsa', 'present' : getBoolFromStorage('mta'), 'tab' : null, 'done' : false, 'time' : 0 },
-            'Agathe': {'trigram' : 'Agathe', 'name': 'Agathe', 'present' : getBoolFromStorage('adl'), 'tab' : null, 'done' : false, 'time' : 0 },
-            'Justin': {'trigram' : 'Justin', 'name': 'Justin', 'present' : getBoolFromStorage('jtn'), 'tab' : null, 'done' : false, 'time' : 0 }
         }
         
     }
