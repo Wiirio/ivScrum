@@ -1,22 +1,4 @@
-﻿// const apiUrl = 'https://iv-scrum-api.herokuapp.com';
-// const apiUrl = 'https://localhost:5001'
-const DccReminder = () => {
-    const CCtab = document.querySelector('.tab.selected[data-team-id="2b139375-8dda-40ae-94d9-c4d58713ac91"]');
-    const txt = document.getElementById('txtDevCurrent');
-    if (!CCtab){
-        txt.textContent = null;
-        return;
-    }
-    // var a = new Date('24 december 2022')
-    var a = new Date('28 november 2022'); 
-    var b = new Date()    
-    const diffTime = Math.abs(a - b);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-    txt.textContent = `Anaïs, ${diffDays} Days Before End of Free Hosting Plan...`;    
-    // txt.textContent = `${diffDays} Days Before DCC Release...`;    
-}
-
-const teams = [
+﻿const teams = [
     {
         "name": "Admin",
         "id": "2",
@@ -25,8 +7,8 @@ const teams = [
         {
             'tdu': {'trigram' : 'tdu', 'name': 'Tu', 'present' : getBoolFromStorage('tdu'), 'tab' : null, 'done' : false, 'time' : 0 },
             'dmz': {'trigram' : 'dmz', 'name': 'David', 'present' : getBoolFromStorage('dmz'), 'tab' : null, 'done' : false, 'time' : 0 },
-            'nal': {'trigram' : 'nal', 'name': 'Nicolas (A)', 'present' : getBoolFromStorage('nal'), 'tab' : null, 'done' : false, 'time' : 0 },
-            'ngt': {'trigram' : 'ngt', 'name': 'Nicolas (G)', 'present' : getBoolFromStorage('ngt'), 'tab' : null, 'done' : false, 'time' : 0 },
+            //'nal': {'trigram' : 'nal', 'name': 'Nicolas (A)', 'present' : getBoolFromStorage('nal'), 'tab' : null, 'done' : false, 'time' : 0 },
+            'ngt': {'trigram' : 'ngt', 'name': 'Nicolas', 'present' : getBoolFromStorage('ngt'), 'tab' : null, 'done' : false, 'time' : 0 },
             'ohx': {'trigram' : 'ohx', 'name': 'Oren', 'present' : getBoolFromStorage('ohx'), 'tab' : null, 'done' : false, 'time' : 0 },
             'odc': {'trigram' : 'odc', 'name': 'Olivier', 'present' : getBoolFromStorage('odc'), 'tab' : null, 'done' : false, 'time' : 0 },
             'thm': {'trigram' : 'thm', 'name': 'Thibaut', 'present' : getBoolFromStorage('thm'), 'tab' : null, 'done' : false, 'time' : 0 },
@@ -40,10 +22,7 @@ const teams = [
 
 function getBoolFromStorage(key) {
     var it = localStorage.getItem(key);
-    if (it === null){
-        return true;
-    }
-    return localStorage.getItem(key) === 'true';
+    return it === null || it === 'true';
 }
 
 function setBoolToStorage(key, value) {
@@ -109,9 +88,8 @@ const getDevList = () => {
             div.append(label);
             li.append(chk);
             ul.append(li);
-            if (!chk.checked){
+            if (!chk.checked)
                 li.classList.add('off');
-            }
             currentTeam[trigram].tab = li;
         });
     });    
