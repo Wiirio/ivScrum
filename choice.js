@@ -5,16 +5,17 @@
         "trelloId": "626f8c46f7f94f30b0bc78d4",
         "devs": 
         {
-            'tdu': {'trigram' : 'tdu', 'name': 'Tu', 'present' : getBoolFromStorage('tdu'), 'tab' : null, 'done' : false, 'time' : 0 },
+            'aud': {'trigram' : 'aud', 'name': 'Aurélie', 'present' : getBoolFromStorage('aud'), 'tab' : null, 'done' : false, 'time' : 0 },
             'dmz': {'trigram' : 'dmz', 'name': 'David', 'present' : getBoolFromStorage('dmz'), 'tab' : null, 'done' : false, 'time' : 0 },
+            'jep': {'trigram' : 'jep', 'name': 'Jérôme', 'present' : getBoolFromStorage('jep'), 'tab' : null, 'done' : false, 'time' : 0 },
+            'mta': {'trigram' : 'mta', 'name': 'Messipsa', 'present' : getBoolFromStorage('mta'), 'tab' : null, 'done' : false, 'time' : 0 },
             //'nal': {'trigram' : 'nal', 'name': 'Nicolas (A)', 'present' : getBoolFromStorage('nal'), 'tab' : null, 'done' : false, 'time' : 0 },
             'ngt': {'trigram' : 'ngt', 'name': 'Nicolas', 'present' : getBoolFromStorage('ngt'), 'tab' : null, 'done' : false, 'time' : 0 },
             'ohx': {'trigram' : 'ohx', 'name': 'Oren', 'present' : getBoolFromStorage('ohx'), 'tab' : null, 'done' : false, 'time' : 0 },
             'odc': {'trigram' : 'odc', 'name': 'Olivier', 'present' : getBoolFromStorage('odc'), 'tab' : null, 'done' : false, 'time' : 0 },
+            'tdu': {'trigram' : 'tdu', 'name': 'Tu', 'present' : getBoolFromStorage('tdu'), 'tab' : null, 'done' : false, 'time' : 0 },
             'thm': {'trigram' : 'thm', 'name': 'Thibaut', 'present' : getBoolFromStorage('thm'), 'tab' : null, 'done' : false, 'time' : 0 },
             'tsn': {'trigram' : 'tsn', 'name': 'Tania', 'present' : getBoolFromStorage('tsn'), 'tab' : null, 'done' : false, 'time' : 0 },
-            'aud': {'trigram' : 'aud', 'name': 'Aurélie', 'present' : getBoolFromStorage('aud'), 'tab' : null, 'done' : false, 'time' : 0 },
-            'mta': {'trigram' : 'mta', 'name': 'Messipsa', 'present' : getBoolFromStorage('mta'), 'tab' : null, 'done' : false, 'time' : 0 },
         }
         
     }
@@ -54,9 +55,6 @@ const getDevList = () => {
     const res = [...items].reduce((prev, cur, i, arr) => {
         const input = cur.querySelector('.name-label');
         prev.push(input.getAttribute('for'));
-        // if (input.checked){
-        //     prev.push(input.value);
-        // }
         return prev;
     }, []);
     return res;
@@ -70,13 +68,12 @@ const getDevList = () => {
         Object.entries(devs).forEach(([trigram, e]) => { 
             const li = document.createElement('li');
             li.setAttribute('data-user-id', e.trello);            
-            const div = document.createElement('div');
-            div.classList.add('label');
-            div.setAttribute('id', trigram);
+
             const label = document.createElement('label');
             label.classList.add('name-label');
             label.setAttribute('for', trigram);
             label.textContent = e.name;
+            
             const chk = document.createElement('input');
             chk.setAttribute('value', trigram);
             chk.setAttribute('id', trigram);
@@ -84,8 +81,7 @@ const getDevList = () => {
             chk.checked = getBoolFromStorage(trigram);   
             chk.addEventListener('change', chkChangeHandler)
             
-            li.append(div);
-            div.append(label);
+            li.append(label);
             li.append(chk);
             ul.append(li);
             if (!chk.checked)
